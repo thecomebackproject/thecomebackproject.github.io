@@ -26,7 +26,7 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 14px 40px;
 }
-nav .logo-text { font-family: 'Oswald', sans-serif; font-size: 20px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+nav img.logo { height: 52px; width: auto; }
 nav ul { list-style: none; display: flex; gap: 32px; }
 nav ul a { color: var(--gray); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
 nav ul a:hover { color: var(--gold); }
@@ -35,7 +35,8 @@ nav ul a:hover { color: var(--gold); }
   min-height: 100vh; display: flex; flex-direction: column;
   align-items: center; justify-content: center; text-align: center;
   padding: 120px 24px 80px;
-  background: radial-gradient(ellipse at center, #1a1500 0%, var(--black) 70%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 100%),
+              url('dallas.png') center center / cover no-repeat;
   position: relative; overflow: hidden;
 }
 #hero::before {
@@ -78,12 +79,25 @@ section { padding: 90px 24px; }
 #mission blockquote { margin-top: 32px; border-left: 3px solid var(--gold); padding-left: 24px; font-family: 'Oswald', sans-serif; font-size: 22px; color: var(--gold-light); font-style: italic; }
 
 #services { background: var(--black); }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 40px; }
-.card { background: var(--card); padding: 36px 32px; border-bottom: 3px solid transparent; transition: border-color 0.2s, transform 0.2s; }
-.card:hover { border-color: var(--gold); transform: translateY(-4px); }
-.card-icon { font-size: 32px; margin-bottom: 16px; }
-.card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3px; margin-top: 40px; }
+.card {
+  position: relative; height: 280px; overflow: hidden;
+  border-bottom: 3px solid transparent; transition: border-color 0.3s;
+}
+.card:hover { border-color: var(--gold); }
+.card-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  transition: transform 0.4s ease;
+}
+.card:hover .card-bg { transform: scale(1.05); }
+.card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 40%, rgba(0,0,0,0.4) 100%);
+}
+.card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px; }
+.card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--white); }
+.card p { font-size: 13px; color: #ccc; line-height: 1.6; }
 
 #involved { background: var(--dark); border-top: 1px solid var(--border); }
 .involve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
@@ -112,6 +126,7 @@ footer span { color: var(--gold); }
   nav ul a { font-size: 11px; }
   .contact-grid { grid-template-columns: 1fr; gap: 0; }
   .hero-badges { gap: 24px; }
+  nav img.logo { height: 40px; }
 }
 @media (max-width: 480px) {
   nav ul { display: none; }
@@ -121,7 +136,7 @@ footer span { color: var(--gold); }
 <body>
 
 <nav>
-  <span class="logo-text">The Comeback Project</span>
+  <img src="logo.jpeg" alt="The Comeback Project" class="logo">
   <ul>
     <li><a href="#mission">Mission</a></li>
     <li><a href="#services">What We Do</a></li>
@@ -138,126 +153,4 @@ footer span { color: var(--gold); }
   <div class="hero-badges">
     <div class="badge"><div class="badge-num">2</div><div class="badge-label">Counties Served</div></div>
     <div class="badge"><div class="badge-num">6+</div><div class="badge-label">Core Programs</div></div>
-    <div class="badge"><div class="badge-num">501(c)(3)</div><div class="badge-label">IRS Approved</div></div>
-  </div>
-</section>
-
-<section id="mission">
-  <div class="container">
-    <p class="section-label">Our Mission</p>
-    <h2 class="section-title">Breaking Cycles.<br>Building Futures.</h2>
-    <div class="divider"></div>
-    <p class="body">The Comeback Project is a Texas-based 501(c)(3) nonprofit dedicated to helping justice-involved individuals rebuild stable, productive lives. We serve Dallas and Ellis County by connecting people to workforce opportunities, skilled trades, mentorship, and the community resources they need to thrive after incarceration.</p>
-    <blockquote>"Trades over trauma. Hope after release. Restoration and rebuilding."</blockquote>
-  </div>
-</section>
-
-<section id="services">
-  <div class="container">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">Programs &amp; Services</h2>
-    <div class="divider"></div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">🔧</div>
-        <h3>Workforce Readiness</h3>
-        <p>Resume building, interview prep, job placement support, and connections to local employers ready to hire returning citizens.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏗️</div>
-        <h3>Trades Apprenticeship</h3>
-        <p>Connecting individuals to apprenticeships in plumbing, HVAC, electrical, and construction — real careers with real futures.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔓</div>
-        <h3>Re-Entry Support</h3>
-        <p>Guidance through the transition from incarceration — ID recovery, housing referrals, transportation assistance, and more.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤝</div>
-        <h3>Mentorship</h3>
-        <p>Life stabilization through one-on-one mentoring, accountability, and community connection from people who understand the journey.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎒</div>
-        <h3>Community Drives</h3>
-        <p>Hygiene drives and backpack drives for children and families impacted by incarceration — meeting people where they are.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Resource Connections</h3>
-        <p>Referrals to clothing, food pantries, faith organizations, and partner nonprofits throughout Dallas and Ellis County.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="involved">
-  <div class="container">
-    <p class="section-label">Join the Mission</p>
-    <h2 class="section-title">Get Involved</h2>
-    <div class="divider"></div>
-    <div class="involve-grid">
-      <div class="involve-card">
-        <h3>💛 Donate</h3>
-        <p>Your gift directly funds workforce programs, community drives, and re-entry support for individuals rebuilding their lives.</p>
-        <a href="mailto:Cgonzales@comebackproject.org" class="btn-outline">Donate Coming Soon</a>
-      </div>
-      <div class="involve-card">
-        <h3>🙌 Volunteer</h3>
-        <p>Mentor, assist with drives, or bring your skills to the table. Every hour you give helps someone find their way back.</p>
-        <a href="mailto:Cgonzales@comebackproject.org" class="btn-outline">Get In Touch</a>
-      </div>
-      <div class="involve-card">
-        <h3>🤝 Partner With Us</h3>
-        <p>Churches, businesses, and organizations — join us as a sponsor or community partner and help us expand our reach across DFW.</p>
-        <a href="mailto:Cgonzales@comebackproject.org" class="btn-gold">Become a Partner</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <p class="section-label">Reach Out</p>
-    <h2 class="section-title">Contact Us</h2>
-    <div class="divider"></div>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-item">
-          <label>Email</label>
-          <a href="mailto:Cgonzales@comebackproject.org">Cgonzales@comebackproject.org</a>
-        </div>
-        <div class="contact-item">
-          <label>Area Served</label>
-          <span>Dallas County &amp; Ellis County, Texas</span>
-        </div>
-        <div class="contact-item">
-          <label>Organization</label>
-          <span>IRS-Approved 501(c)(3) Nonprofit</span>
-        </div>
-      </div>
-      <div>
-        <div class="contact-item">
-          <label>Follow Us</label>
-          <div class="social-links">
-            <a href="https://www.instagram.com/_mizz.g_/" target="_blank">Instagram</a>
-            <a href="https://www.tiktok.com/@_.mrs.g._" target="_blank">TikTok</a>
-          </div>
-        </div>
-        <div class="contact-item" style="margin-top:32px;">
-          <p style="font-size:15px; color:#888; line-height:1.8;">Ready to invest in your community? Whether you're a business, church, or individual — there's a place for you in this mission.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p><span>The Comeback Project</span> &nbsp;·&nbsp; Dallas &amp; Ellis County, Texas<br>
-  IRS-Approved 501(c)(3) Nonprofit &nbsp;·&nbsp; © 2026 All Rights Reserved<br>
-  <span style="font-size:11px; color:#333;">Cgonzales@comebackproject.org</span></p>
-</footer>
-
-</body>
-</html>
+    <div
