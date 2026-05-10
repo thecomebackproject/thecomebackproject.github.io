@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a Sponsor | The Comeback Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --card: #1a1a1a;
+  --gold: #C9A84C;
+  --gold-light: #e2c06a;
+  --white: #ffffff;
+  --gray: #aaaaaa;
+  --border: #2a2a2a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: 'Lato', sans-serif; }
+
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(10,10,10,0.97); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px;
+}
+nav img.logo { height: 52px; width: auto; }
+nav ul { list-style: none; display: flex; gap: 32px; }
+nav ul a { color: var(--gray); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+nav ul a:hover { color: var(--gold); }
+
+#hero {
+  min-height: 60vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 140px 24px 80px;
+  background: radial-gradient(ellipse at center, #1a1500 0%, var(--black) 70%);
+}
+.hero-tag { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+#hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(42px, 8vw, 80px); font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+#hero h1 span { color: var(--gold); }
+#hero p { font-size: 18px; color: var(--gray); max-width: 600px; line-height: 1.7; font-weight: 300; font-style: italic; }
+
+section { padding: 80px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+.section-title { font-family: 'Oswald', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.divider { width: 60px; height: 3px; background: var(--gold); margin: 20px 0 40px; }
+
+#why { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+#why p { font-size: 17px; line-height: 1.9; color: #cccccc; max-width: 740px; font-weight: 300; }
+#why .stats { display: flex; gap: 48px; margin-top: 48px; flex-wrap: wrap; }
+#why .stat { text-align: center; }
+#why .stat-num { font-family: 'Oswald', sans-serif; font-size: 42px; color: var(--gold); font-weight: 700; }
+#why .stat-label { font-size: 12px; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; margin-top: 6px; }
+
+#tiers { background: var(--black); }
+.tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+.tier-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 40px 32px; position: relative;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.tier-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.tier-card.featured { border-color: var(--gold); }
+.tier-badge {
+  position: absolute; top: -14px; left: 32px;
+  background: var(--gold); color: var(--black);
+  font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 4px 16px; font-weight: 700;
+}
+.tier-icon { font-size: 36px; margin-bottom: 16px; }
+.tier-name { font-family: 'Oswald', sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; }
+.tier-amount { font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); margin-bottom: 24px; }
+.tier-amount span { font-size: 16px; color: var(--gray); font-weight: 300; }
+.tier-benefits { list-style: none; margin-bottom: 32px; }
+.tier-benefits li { font-size: 14px; color: #ccc; padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.tier-benefits li::before { content: '✓ '; color: var(--gold); font-weight: 700; }
+.btn-gold {
+  display: inline-block; background: var(--gold); color: var(--black);
+  font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 3px;
+  text-transform: uppercase; padding: 16px 32px; text-decoration: none;
+  font-weight: 600; transition: background 0.2s, transform 0.2s; width: 100%; text-align: center;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-block; border: 1px solid var(--gold); color: var(--gold);
+  font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 3px;
+  text-transform: uppercase; padding: 15px 32px; text-decoration: none;
+  font-weight: 600; transition: all 0.2s; width: 100%; text-align: center;
+}
+.btn-outline:hover { background: var(--gold); color: var(--black); }
+
+#cta { background: var(--dark); border-top: 1px solid var(--border); text-align: center; }
+#cta h2 { font-family: 'Oswald', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+#cta p { font-size: 16px; color: var(--gray); max-width: 540px; margin: 0 auto 40px; line-height: 1.7; }
+
+footer { background: #050505; border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+footer p { font-size: 12px; color: #444; font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase; line-height: 2; }
+footer span { color: var(--gold); }
+
+@media (max-width: 768px) {
+  nav { padding: 12px 20px; }
+  nav ul { gap: 16px; }
+  nav ul a { font-size: 11px; }
+  #why .stats { gap: 24px; }
+}
+@media (max-width: 480px) {
+  nav ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="logo.jpeg" alt="The Comeback Project" class="logo">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#mission">Mission</a></li>
+    <li><a href="index.html#services">What We Do</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-tag">Partner With Us &nbsp;·&nbsp; Dallas & Ellis County, Texas</p>
+  <h1>Invest in the<br><span>Comeback</span></h1>
+  <p>Your sponsorship funds second chances, builds careers, and transforms communities. Be part of something that matters.</p>
+</section>
+
+<section id="why">
+  <div class="container">
+    <p class="section-label">Why Partner With Us</p>
+    <h2 class="section-title">Your Investment<br>Changes Lives</h2>
+    <div class="divider"></div>
+    <p>The Comeback Project is doing the hard work — meeting justice-involved individuals where they are and walking alongside them toward stability, employment, and restored dignity. When you partner with us, your investment goes directly into workforce training, trade apprenticeships, community drives, and mentorship programs that break cycles of recidivism and build stronger communities across Dallas and Ellis County.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Counties Served</div></div>
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Core Programs</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Mission Driven</div></div>
+      <div class="stat"><div class="stat-num">501(c)(3)</div><div class="stat-label">Tax Deductible</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tiers">
+  <div class="container">
+    <p class
